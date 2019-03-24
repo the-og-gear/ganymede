@@ -81,6 +81,12 @@ class g {
 		} catch(e) {
 			console.log(`${i} commands loaded in ${commandLoadEnd[0]}s ${commandLoadEnd[1] / 1000000}ms`);
 		}
+
+		// Run the unit tester, if we are testing
+		if (testing) require('./UnitTests/unit_test_main.js');
+
+		// We reached this point, we need to run the client!
+		require('./bot.js');
 	}
 }
 
