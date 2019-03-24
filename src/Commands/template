@@ -1,0 +1,11 @@
+// NodeJS
+// Command template
+module.exports = {
+	name: "",
+	description: "",
+	async execute(message, tokens) {
+		// Do stuff here. Extra functions can be defined in ./Helpers or down below the module.exports statement, under the comment.
+	}
+}
+
+/* ----- DEFINE EXTRA FUNCTIONS BELOW ----- */
