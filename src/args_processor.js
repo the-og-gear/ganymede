@@ -31,7 +31,7 @@ switches.forEach(s => {
 			case '-':
 			  break;
 			default:
-			  console.log(`Unknown switch '${s.charAt(i))}'.`);
+			  console.log(`Unknown switch '${s.charAt(i)}'.`);
 			  break;
 		}
 	}

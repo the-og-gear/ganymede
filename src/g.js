@@ -4,8 +4,8 @@ class g {
 
 	constructor(testing, logger, embedder) {
 		this.configSkip = testing;
-		if (logger) setUpLogger();
-		continueSetUp(testing, this.configSkip, embedder);
+		if (logger) this.setUpLogger();
+		this.continueSetUp(testing, this.configSkip, embedder);
 	}
 
 	setUpLogger() {
@@ -22,7 +22,7 @@ class g {
 		}
 	}
 
-	continueSetup(testing, skip, embedder) {
+	continueSetUp(testing, skip, embedder) {
 		// Load discord.js
 		global.Discord = require('discord.js');
 
@@ -87,9 +87,9 @@ class g {
 		global.handler = require('./Modules/handler.js');
 		let handlerLoadEnd = process.hrtime(handlerLoadStart);
 		try {
-			log.success(`Command handler loaded in ${handlerLoadEnd[0]}s ${handler.LoadEnd[1] / 1000000}ms`);
+			log.success(`Command handler loaded in ${handlerLoadEnd[0]}s ${handlerLoadEnd[1] / 1000000}ms`);
 		} catch(e) {
-			console.log(`Command handler loaded in ${handlerLoadEnd[0]}s ${handler.LoadEnd[1] / 1000000}ms`);
+			console.log(`Command handler loaded in ${handlerLoadEnd[0]}s ${handlerLoadEnd[1] / 1000000}ms`);
 		}
 
 		// Run the unit tester, if we are testing
