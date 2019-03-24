@@ -82,6 +82,16 @@ class g {
 			console.log(`${i} commands loaded in ${commandLoadEnd[0]}s ${commandLoadEnd[1] / 1000000}ms`);
 		}
 
+		// Load the command handler
+		let handlerLoadStart = process.hrtime();
+		global.handler = require('./Modules/handler.js');
+		let handlerLoadEnd = process.hrtime(handlerLoadStart);
+		try {
+			log.success(`Command handler loaded in ${handlerLoadEnd[0]}s ${handler.LoadEnd[1] / 1000000}ms`);
+		} catch(e) {
+			console.log(`Command handler loaded in ${handlerLoadEnd[0]}s ${handler.LoadEnd[1] / 1000000}ms`);
+		}
+
 		// Run the unit tester, if we are testing
 		if (testing) require('./UnitTests/unit_test_main.js');
 
