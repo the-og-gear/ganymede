@@ -11,11 +11,10 @@ class g {
 	setUpLogger() {
 		let logLoadStart = process.hrtime();
 		global.log = require('./Modules/logger.js');
+		let logLoadEnd = process.hrtime(logLoadStart);
 		try {
-			let logLoadEnd = process.hrtime(logLoadStart);
 			log.success(`Logger initialized successfully in ${logLoadEnd[0]}s ${logLoadEnd[1] / 1000000}ms`);
 		} catch(e) {
-			let logLoadEnd = process.hrtime(loagLoadStart);
 			console.log("Error setting up the logger, please see error logs.");
 			let tempFS = require('fs');
 			tempFS.mkdirSync('./Logs/');
@@ -34,11 +33,10 @@ class g {
 		if (embedder) {
 			let embedLoadStart = process.hrtime();
 			global.embedder = require('./Modules/embedder.js');
+			let embedLoadEnd = process.hrtime(embedLoadStart);
 			try {
-				let embedLoadEnd = process.hrtime(embedLoadStart);
 				log.success(`Embedder loaded in ${embedLoadEnd[0]}s ${embedLoadEnd[1] / 10000000}ms`);
 			} catch(e) {
-				let embedLoadEnd = peocess.hrtime(embedLoadStart);
 				console.log(`Embedder loaded in ${embedLoadEnd[0]}s ${embedLoadEnd[1] / 1000000}ms`);
 			}
 		}
