@@ -29,6 +29,9 @@ class g {
 		// Load file system for outputting
 		global.fs = require('fs');
 
+		// Add the path module
+		global.path = require('path');
+
 		// Check and/or load embedder
 		if (embedder) {
 			let embedLoadStart = process.hrtime();
@@ -44,7 +47,7 @@ class g {
 		// Load configs, if we aren't testing and we weren't told to skip
 		if (!testing && !skip) {
 			let configLoadStart = process.hrtime();
-			global.configs = JSON.parse(fs.readFileSync('./Configuration/configuration.json'));
+			global.configs = JSON.parse(fs.readFileSync(path.join(__dirname, '.', 'Configuration', 'configuration.json')));
 			let configLoadEnd = process.hrtime(configLoadStart);
 			try {
 				log.success(`Config files loaded in ${configLoadEnd[0]}s ${configLoadEnd[1] / 1000000}ms`);
@@ -61,6 +64,11 @@ class g {
 
 		/* ---------- Load your APIs here ------------ */
 
+		// MySQL
+		global.mysql = require('mysql');
+		// Create the pool
+		global.pool = mysql.createPool(configs.credentials.sql);
+
 		/* ----------   End API loading   ------------ */
 
 		// Create the client and load commands into it
@@ -68,10 +76,10 @@ class g {
 
 		client.commands = new Discord.Collection();
 		let commandLoadStart = process.hrtime();
-		let commandFiles = fs.readdirSync('./src/Commands/').filter(file => file.endsWith('.js'));
+		let commandFiles = fs.readdirSync(path.join(__dirname, 'Commands')).filter(file => file.endsWith('.js'));
 		let i = 0;
 		for (let file of commandFiles) {
-			let command = require(`./Commands/${file}`);
+			let command = require(path.join(__dirname, 'Commands', file));
 			i++;
 			client.commands.set(command.name, command);
 		}
@@ -96,7 +104,7 @@ class g {
 		if (testing) require('./UnitTests/unit_test_main.js');
 
 		// We reached this point, we need to run the client!
-		require('./bot.js');
+		require('./main.js');
 	}
 }
 

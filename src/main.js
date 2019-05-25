@@ -19,4 +19,12 @@ client.on('message', message => {
 });
 
 // Client login, connect to Discord
-client.login(configs.credentials.bot_key);
+try {
+	client.login(configs.credentials.bot_key);
+} catch(e) {
+	try {
+		log.error(`Unable to connect to Discord!`);
+	} catch(e1) {
+		console.log("Unable to connect to Discord!");
+	}
+}
