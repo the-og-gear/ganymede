@@ -1,24 +1,17 @@
-# Discord-Bot-Framework
-Discord bot framework - Just add commands!
+# Ganymede
+A discord bot repo, again? Who knew!
 
------------
+----------
 
-This is a bot framework, designed for those who don't want to set up a bot themselves with the hassle of making it secure and efficient with command handling. The framework is modular, to make for easy command, module, and helper creation.
+### Warning!
+This source was never meant to be *portable*, it was only meant for a general storage. Modules *are* missing, and the config file would need reverse engineered.
 
------------
+If you wish to attempt modification, reverse engineering, or any form of such with this code, you are required to DM `Gear#4460` on Discord (or me, here on Git, you can make an issue requesting permission) for the permission.
 
-The options available for running the bot are `-t` to run unit tests, `-l` to disable the logger, and `-e` to disable the embedder plugin.
+----------
 
------------
+Regarding the code, it is documented to the extent I see fit. I don't comment every line, though I do add them as I see them needed, mainly for obscure functions and for what paramters, preconditions, and outputs you get from functions.
 
-To set up the bot:
-1. Follow the process of getting a bot user and adding it to your Discord server
-2. Download this code and modify as you please
-3. Run `npm install` in the main directory
-4. Run `node config_gen.js` in the main directory
-5. Modify the configs as you please in `./src/Configuration`
-6. Run `node start.js` with optional switches in the main directory.
+----------
 
------------
-
-You can use PM2 to automatically restart the bot when it goes down, or for better monitoring of the bot and its resource usage.
+This was created using my own framework as a base.
