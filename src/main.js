@@ -20,7 +20,7 @@ client.on('message', message => {
 
 // Client login, connect to Discord
 try {
-	client.login(configs.credentials.bot_key);
+	client.login(configs.credentials.discord.bot_key);
 } catch(e) {
 	try {
 		log.error(`Unable to connect to Discord!`);

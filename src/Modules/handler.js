@@ -7,11 +7,13 @@ function handle(message) {
 
 	let firstSpace = message.content.indexOf(' ');
 	if (firstSpace > 0) {
-		command = message.content.substring(configs.guild.command_invoker.length - 1, firstSpace);
+		command = message.content.substring(configs.guild.command_invoker.length, firstSpace);
 		tokens = message.content.substring(firstSpace + 1).split(' ');
 	} else {
-		command = message.content.substring(configs.guild.command_invoker.length - 1);
+		command = message.content.substring(configs.guild.command_invoker.length);
 	}
+
+	command = command.toLowerCase();
 
 	try {
 		client.commands.get(command).execute(message, tokens);
