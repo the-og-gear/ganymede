@@ -16,6 +16,6 @@ module.exports = {
     }
 }
 
-function startupDB(message) {
+function setupDB(message) {
     message.reply(' functionality not currently implemented. Please try again after updates.');
 }
