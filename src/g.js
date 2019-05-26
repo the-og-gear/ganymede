@@ -83,6 +83,15 @@ class g {
 			i++;
 			client.commands.set(command.name, command);
 		}
+
+		// Load the hidden game commands (so we can use techniques that we don't want others seeing)
+		commandFiles = fs.readdirSync(path.join(__dirname, 'Game')).filter(file => file.endsWith('.js'));
+		for (let file of commandFiles) {
+			let command = require(path.join(__dirname, 'Game', file));
+			i++
+			client.commands.set(command.name, command);
+		}
+
 		let commandLoadEnd = process.hrtime(commandLoadStart);
 		try {
 			log.success(`${i} commands loaded in ${commandLoadEnd[0]}s ${commandLoadEnd[1] / 1000000}ms`);
